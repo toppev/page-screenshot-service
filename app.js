@@ -23,9 +23,6 @@ app.use(cors());
 
 puppeteer.launch({ args: ['--no-sandbox'] }).then(browser => {
 
-    const port = process.env.PORT || 3005;
-    app.listen(port, () => console.log(`App listening on port ${port}!`));
-
     app.get('/', (req, res) => {
         const defaults = {
             quality: 10,
@@ -57,6 +54,9 @@ puppeteer.launch({ args: ['--no-sandbox'] }).then(browser => {
             })();
         }
     });
+
+    const port = process.env.PORT || 3005;
+    app.listen(port, () => console.log(`App listening on port ${port}!`));
 });
 
 module.exports = app;
