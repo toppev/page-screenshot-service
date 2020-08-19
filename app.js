@@ -21,7 +21,7 @@ app.use(morgan('":url :status - :response-time ms (len: :req[content-length]) :b
     { stream: logger.stream }));
 app.use(cors());
 
-puppeteer.launch().then(browser => {
+puppeteer.launch({ args: ['--no-sandbox'] }).then(browser => {
 
     const port = process.env.PORT || 3005;
     app.listen(port, () => console.log(`App listening on port ${port}!`));
