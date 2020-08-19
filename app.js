@@ -30,7 +30,6 @@ puppeteer.launch().then(browser => {
         const defaults = {
             quality: 10,
             device: 'iPhone 8',
-            url: 'https://google.com/'
         }
         const options = { ...defaults, ...req.body };
         const url = options.url;
