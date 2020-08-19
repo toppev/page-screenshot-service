@@ -23,12 +23,12 @@ app.use(cors());
 
 puppeteer.launch({ args: ['--no-sandbox'] }).then(browser => {
 
-    app.get('/', (req, res) => {
+    app.use('/', (req, res) => {
         const defaults = {
             quality: 10,
             device: 'iPhone 8',
         }
-        const options = { ...defaults, ...req.body };
+        const options = { ...defaults, ...req.body, ...req.query };
         const url = options.url;
         // A very simple way to secure this service
         if (process.env.TOKEN && req.body.token !== process.env.TOKEN) {
