@@ -16,9 +16,9 @@ morgan.token('body', function (req) {
     return JSON.stringify(req.body)
 });
 
+app.use(express.json());
 app.use(morgan('":url :status - :response-time ms (len: :req[content-length]) :body',
     { stream: logger.stream }));
-app.use(express.json());
 app.use(cors());
 
 puppeteer.launch().then(browser => {
